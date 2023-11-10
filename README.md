@@ -22,11 +22,16 @@ langchain app add cassandra-entomology-rag
 ```commandline
 cp ./packages/cassandra-entomology-rag/cassandra_entomology_rag/.env.template ./packages/cassandra-entomology-rag/cassandra_entomology_rag/.env
 ```
-6. start langserve on your local machine from the my-rag folder
+6. add these lines to your server.py
+```python
+from cassandra_entomology_rag import chain as cassandra_entomology_rag_chain
+add_routes(app, cassandra_entomology_rag_chain, path="/cassandra-entomology-rag")
+```
+7. start langserve on your local machine from the my-rag folder
 ```commandline
 langchain serve
 ```
-7. use browser url to access the playground [http://localhost:8000/cassandra-entomology-rag/playground](http://localhost:8000/cassandra-entomology-rag/playground/)
+8. use browser url to access the playground [http://localhost:8000/cassandra-entomology-rag/playground](http://localhost:8000/cassandra-entomology-rag/playground/)
 ![image](./lserve.png)
 
 That's it!
